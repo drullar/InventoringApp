@@ -8,18 +8,23 @@ class AppWindow(QMainWindow):
 
     """The Main App widget. Any widgets that is part of the 'main window' should be direct descendant of this widget or of
     an already nested one"""
+
     def __init__(self):
         super().__init__()
         self.__set_window_layout()
         self.__set_window_configuration()
 
     def __set_window_layout(self):
-        self.__set_docks()
+        self.__set_dock_widgets()
+        self.__set_central_widget()
 
     def __set_window_configuration(self):
         self.setWindowTitle(APP_NAME)
         self.window().showMaximized()
 
-    def __set_docks(self):
+    def __set_dock_widgets(self):
         self.navigation_menu = NavigationMenu()
         self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, self.navigation_menu)
+
+    def __set_central_widget(self):
+        pass #TODO with the WindowManager implementation
